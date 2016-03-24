@@ -1,0 +1,6 @@
+Twisted
+cryptography
+cffi
+pymodbus==1.3.0
+multiprocessing
+
