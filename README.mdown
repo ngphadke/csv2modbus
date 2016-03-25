@@ -1,0 +1,52 @@
+#README
+
+## Installation Instructions for Configuring Siemens SCADA to provide data to everSENSE
+
+### Configure the Network
+*Assumption: Ethernet Ports on the SCADA PC are already utilized*
+
+**Requirement**
+ - USB-Ethernet Converter
+ - USB-Ethernet Converter Driver *as file or on CD*
+
+ 1. Insert the CD from the USB-Ethernet converter manufacturer into the *SCADA* PC
+ 2. Select the `.exe` file and install the driver.
+ 3. Connect the USB-Ethernet converter to the SCADA PC on any vacant USB port
+ 4. On the Windows Start Bar, *right-click* on the Network Icon and select *Open Network and Sharing Center*
+ 5. On Right-Hand Panel of Network and Sharing center choose the option *Change Adapter Settings*
+ 6. You should see your newly configured Network here
+ 7. Right-click and choose *Properties*
+ 8. In Properties Tab scroll down and select **IPv4** and then click *Properties* button below
+ 9. Select Use the following IP Address Option
+
+  - Enter a LAN IP Address in the same series as the everSENSE Server's IP Address.
+  For e.g - everSENSE Server Address - **192.168.100.25** then Enter IP which is not assigned (consult IT if required) like **192.168.100.230**
+  - Enter Netmask as **255.255.255.0**
+  - Enter Gateway as the same IP Address selected above (*192.168.100.230*)
+
+10. Select OK.
+11. Click on Start Button and select **Run**. Enter `cmd.exe` and Command Prompt should open
+12. In command prompt enter `ipconfig`, in the block for our converter the IP address entered above should come
+13. Connect everSENSE and SCADA PC using Ethernet Cable and Switch.
+14. Try pinging the everSENSE Server from SCADA PC by using command
+    `ping 192.168.100.25`
+    **Substitute above IP Address for the actual IP Address of everSENSE**
+
+Network Connection between the two has now been established.
+
+### Start csv2modbus on SCADA PC
+1. Paste the new HMI Application from the pendrive to the folder `C:\everSENSE`
+2. Stop the running HMI Application.
+3. Start the new HMI Application
+4. After 30-60 seconds check that the file `data.csv` is created in the folder `C:\everSENSE`
+5. If the file is generated successfully and values in it change every 30 seconds, paste the file `csv2modbus.exe` to the same folder
+6. Run csv2modbus.exe, command prompt should open and you should see the same values in the output of command prompt.
+7. The values should reappear every 5-10 seconds
+
+### Check on everSENSE
+1. In everSENSE on Device Settings, configure a TCP Channel with IP address of the SCADA PC and port as **5020** (NOTE - 5020 not 502)
+2. Enter the parameters as F-32 registers like normal.
+3. Save and check that communication is OK
+4. Check that data is changing every 1/2 minutes.
+
+###Done
