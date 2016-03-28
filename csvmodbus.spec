@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['csv2modbus_singlefile.py'],
-             pathex=['C:\\Python27', 'D:\\Coding\\tmp\\bestpaper'],
+             pathex=['D:\\Coding\\Current\\csv2modbus'],
              binaries=None,
              datas=None,
              hiddenimports=['cryptography.hazmat.backends.openssl'],
@@ -18,16 +18,11 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          exclude_binaries=True,
-          name='csv2modbus_singlefile',
-          debug=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
+          name='csvmodbus',
+          debug=False,
           strip=False,
           upx=True,
-          console=True )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='csv2modbus_singlefile')
+          console=True , icon='csv2modbus.ico')
