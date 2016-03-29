@@ -83,7 +83,7 @@ def read_data_file(filepath):
         with open(filepath, 'rb') as csvfile:
             file = csv.reader(csvfile, delimiter=',')
             first_row = next(file)
-            data = first_row[0:]
+            data = first_row[0:40]
             print data
             data = [float(i) for i in data]
             if not data:
