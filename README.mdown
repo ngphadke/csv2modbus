@@ -1,8 +1,8 @@
 #README
 #csv2modbus Project
 
-This a python module which allows the user to source data from a CSV file
-server _on the local machine_ and present the resulting values on a ModbusTCP server
+This a python module which allows the user to source data from a **single** CSV file
+ _on the local machine_ and present the resulting values on a ModbusTCP server
 
 ##Setting Up For Development
 
@@ -18,12 +18,12 @@ python setup.py install
 ```
 
 ###Install Pyinstaller
-Pyinstaller is used to make a onefile executable for Windows
-Get if from the [official site](http://www.pyinstaller.org/)
+Pyinstaller is used to make a one-file executable for Windows
+Get it from the [official site](http://www.pyinstaller.org/)
 
 ###Making an executable
-To compile to a executable as is run the following command in the root directory
-_(Ensure pyinstaller is available in PATH)_
+To compile to a executable _as-is_ run the following command in the root directory
+__(Ensure pyinstaller is available in PATH)__
 
 ```
 pyinstaller.exe .\csvmodbus.spec
